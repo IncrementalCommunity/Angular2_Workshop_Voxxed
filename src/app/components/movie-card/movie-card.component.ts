@@ -22,4 +22,8 @@ export class MovieCardComponent implements OnInit {
   deleteMovie() {
     this.onDelete.emit(this.index);
   }
+
+  getEditRoute() {
+    return '/movie/' + this.index;
+  }
 }
