@@ -31,4 +31,15 @@
       <img [src]="movieForm.poster" *ngIf="movieForm.poster">
     </div>
   </div>
+  <div class="Details-Imdb card">
+    <div class="card-content">
+      Add details from IMDB
+      <div class="input-field col s12">
+        <input placeholder="Insert IMDB code" id="movie_imdb_code" type="text" name="title" [(ngModel)]="imdbId">
+      </div>
+      <button class="btn blue waves-effect waves-light" name="action" (click)="searchImdb()">
+        Search IMDB
+      </button>
+    </div>
+  </div>
 </div>

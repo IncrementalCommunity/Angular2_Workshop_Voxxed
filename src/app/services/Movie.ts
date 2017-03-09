@@ -1,4 +1,14 @@
 export class Movie {
+  static parseMovie(apiObject) {
+    return new Movie(
+      apiObject.Title,
+      apiObject.Year,
+      apiObject.Runtime,
+      apiObject.Genre,
+      apiObject.Plot,
+      apiObject.Poster
+    );
+  }
 
   constructor(
     public title: string,

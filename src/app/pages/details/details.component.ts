@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DetailsComponent implements OnInit {
   movieForm: Movie = new Movie('', null, '', '', '', '');
   movieId;
+  imdbId;
   constructor(private movieService: MoviesService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -19,7 +20,6 @@ export class DetailsComponent implements OnInit {
       this.movieForm = this.movieService.getMovie(this.movieId);
     }
   }
-
 
   submitForm() {
     if (this.movieId === undefined) {
@@ -30,4 +30,10 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  searchImdb() {
+    this.movieService.searchImdb(this.imdbId)
+      .subscribe((movieResponse: Movie) => {
+       this.movieForm = movieResponse;
+      });
+  }
 }

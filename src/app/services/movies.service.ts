@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Movie } from './Movie';
+import { Http } from "@angular/http";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MoviesService {
@@ -36,7 +39,7 @@ export class MoviesService {
         'As corruption grows in 1950s LA, three policemen - one strait-laced, one brutal, and one sleazy - investigate a series of murders with their own brand of justice.',
         'https://images-na.ssl-images-amazon.com/images/M/MV5BMDBlYzAwZDktNzM2MS00YzBlLWI4ODQtZTlkNmMxZDc3NGRkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg'
       )];
-  constructor() { }
+  constructor(private http: Http) { }
 
   getMovies(): Movie[] {
     return this.movies;
@@ -56,6 +59,17 @@ export class MoviesService {
 
   updateMovie(index, newMovie): void {
     this.movies[index] = newMovie;
+  }
+
+  searchImdb(id): Observable<Movie> {
+    return this.http
+      .get(`http://www.omdbapi.com?i=${id}&type=movie&r=json`)
+      .map(this.processMovie);
+  }
+
+  processMovie(response): Movie {
+    console.log(response.json());
+    return Movie.parseMovie(response.json());
   }
 
 }
