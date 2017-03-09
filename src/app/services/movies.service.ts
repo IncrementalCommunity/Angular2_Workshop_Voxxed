@@ -46,4 +46,16 @@ export class MoviesService {
     this.movies.splice(index, 1);
   }
 
+  addMovie(movie: Movie) {
+    this.movies = [...this.movies, movie];
+  }
+
+  getMovie(index): Movie {
+    return this.movies[index];
+  }
+
+  updateMovie(index, newMovie): void {
+    this.movies[index] = newMovie;
+  }
+
 }
