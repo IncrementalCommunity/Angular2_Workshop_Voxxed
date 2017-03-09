@@ -1,0 +1,11 @@
+<div class="Rating">
+  User rating:
+  <div>
+    <i
+      *ngFor="let rating of ratings; let index = index"
+      class="material-icons Rating-Star"
+      [ngClass]="{'Rating-Star--colored': rating.colored}"
+      (click)="changeRating(index)"
+    >star</i>
+  </div>
+</div>

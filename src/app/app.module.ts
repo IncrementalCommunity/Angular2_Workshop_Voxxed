@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { RatingComponent } from './components/rating/rating.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MovieCardComponent,
+    MovieListComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
